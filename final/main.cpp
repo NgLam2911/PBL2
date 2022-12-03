@@ -13,7 +13,7 @@ int main()
     {
         cout << "       PBL2: DO AN CO SO LAP TRINH" << endl;
         cout << "       Giao vien huong dan: Dang Hoai Phuong" << endl;
-        cout << "       Thanh vien thuc hien: Nguyen Dinh Loc" << endl;
+        cout << "       Sinh Vien thuc hien: Nguyen Dinh Loc" << endl;
         cout << "                             Nguyen Duc Ngoc Lam" << endl;
         cout << "                             Nguyen Duy Tung" << endl;
         cout << endl;
