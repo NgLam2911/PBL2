@@ -1,0 +1,96 @@
+#include "StudentManager.h"
+
+#include <iostream>
+using namespace std;
+
+void StudentManager::addStudent()
+{
+    DoublyLinkedList<Accommodation> listAccommodation;
+    DataBaseManager::readFileAccommodationAndStudent(listAccommodation);
+    Student newStudent;
+    cout << "Enter the informations of new Student: " << endl;
+    cin >> newStudent;
+    for (int i = 0; i < listAccommodation.getSize(); i++)
+        if (listAccommodation.get(i).getID() == newStudent.getIdRoom())
+            if (listAccommodation.get(i).Capacity() == listAccommodation.get(i).getListOfStudent().getSize())
+                throw out_of_range("This room is full!");
+    DoublyLinkedList<Student> listStudent;
+    DataBaseManager::readFileStudent(listStudent);
+    listStudent.push_back(newStudent);
+    listStudent.sort(ascending);
+    DataBaseManager::writeFileStudent(listStudent);
+}
+
+void StudentManager::deleteStudent()
+{
+    DoublyLinkedList<Student> list;
+    DataBaseManager::readFileStudent(list);
+    int code;
+    bool check = 0;
+    cout << "Enter the Student's ID you want to delete: "; cin >> code;
+    for (int i = 0; i < list.getSize(); i++)
+    {
+        if (list.get(i).getID() == code)
+        {
+            list.remove(i);
+            check = 1;
+            break;
+        }
+    }
+    if (!check)
+        throw invalid_argument("This ID was not found!");
+    DataBaseManager::writeFileStudent(list);
+}
+
+void StudentManager::findStudent()
+{
+    DoublyLinkedList<Student> list;
+    DataBaseManager::readFileStudent(list);
+    int code;
+    bool check = 0;
+    cout << "Enter the Student's ID you want to find: "; cin >> code;
+    for (int i = 0; i < list.getSize(); i++)
+    {
+        if (list.get(i).getID() == code)
+        {
+            cout << list.get(i);
+            check = 1;
+            break;
+        }
+    }
+    if (!check)
+        throw invalid_argument("This ID was not found!");
+}
+
+void StudentManager::updateStudent()
+{
+    DoublyLinkedList<Student> list;
+    DataBaseManager::readFileStudent(list);
+    int code;
+    bool check = 0;
+    cout << "Enter the Student's ID you want to edit: "; cin >> code;
+    for (int i = 0; i < list.getSize(); i++)
+    {
+        if (list.get(i).getID() == code)
+        {
+            list.remove(i);
+            check = 1;
+            break;
+        }
+    }
+    if (!check)
+        throw invalid_argument("This ID was not found!");
+    DataBaseManager::writeFileStudent(list);
+    StudentManager::addStudent();
+}
+
+void StudentManager::seeListStudent()
+{
+    DoublyLinkedList<Student> list;
+    DataBaseManager::readFileStudent(list);
+    if (list.getSize() == 0)
+        throw out_of_range("There are no Student in the Database!");
+    cout << "LIST STUDENT:" << endl;
+    for (int i = 0; i < list.getSize(); i++)
+        cout << list.get(i);
+}
