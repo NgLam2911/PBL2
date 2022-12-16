@@ -12,13 +12,18 @@ void StudentManager::addStudent()
     cin >> newStudent;
     for (int i = 0; i < listAccommodation.getSize(); i++)
         if (listAccommodation.get(i).getID() == newStudent.getIdRoom())
+        {
             if (listAccommodation.get(i).Capacity() == listAccommodation.get(i).getListOfStudent().getSize())
                 throw out_of_range("This room is full!");
-    DoublyLinkedList<Student> listStudent;
-    DataBaseManager::readFileStudent(listStudent);
-    listStudent.push_back(newStudent);
-    listStudent.sort(ascending);
-    DataBaseManager::writeFileStudent(listStudent);
+            DoublyLinkedList<Student> listStudent;
+            DataBaseManager::readFileStudent(listStudent);
+            listStudent.push_back(newStudent);
+            listStudent.sort(ascending);
+            DataBaseManager::writeFileStudent(listStudent);
+            return;
+        }
+    cout << "There is no suitable accommodation for this student!" << endl;
+    cout << "Please create this new room first!" << endl;
 }
 
 void StudentManager::deleteStudent()

@@ -15,7 +15,7 @@ int main()
         cout << "       Giao vien huong dan: Dang Hoai Phuong" << endl;
         cout << "       Sinh Vien thuc hien: Nguyen Dinh Loc" << endl;
         cout << "                             Nguyen Duc Ngoc Lam" << endl;
-        cout << "                             Nguyen Duy Tung" << endl;
+        // cout << "                             Nguyen Duy Tung" << endl;
         cout << endl;
         cout << "       DE TAI: QUAN LY KY TUC XA SINH VIEN" << endl;
         cout << "1. Add Student / Room." << endl;
