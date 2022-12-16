@@ -4,10 +4,20 @@
 #include <iostream>
 using namespace std;
 
+bool DataBaseManager::is_empty(ifstream& infile)
+{
+    return infile.peek() == ifstream::traits_type::eof();
+}
+
 void DataBaseManager::readFileStudyRoom(DoublyLinkedList<StudyRoom>& list)
 {
     ifstream infile;
     infile.open("StudyRoom.txt");
+    if (is_empty(infile))
+        {
+            infile.close();
+            return;
+        }
     string f;
     while (!infile.eof())
     {
@@ -28,6 +38,11 @@ void DataBaseManager::readFileStudent(DoublyLinkedList<Student>& list)
 {
     ifstream infile;
     infile.open("Student.txt");
+    if (is_empty(infile))
+        {
+            infile.close();
+            return;
+        }
     string f;
     int d, m, y;
     while(!infile.eof())
@@ -56,6 +71,11 @@ void DataBaseManager::readFileAccommodationAndStudent(DoublyLinkedList<Accommoda
 {
     ifstream infile;
     infile.open("Accommodation.txt");
+    if (is_empty(infile))
+        {
+            infile.close();
+            return;
+        }
     string f;
     while (!infile.eof())
     {

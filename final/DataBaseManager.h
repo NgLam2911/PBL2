@@ -7,6 +7,8 @@
 
 class DataBaseManager
 {
+private:
+    static bool is_empty(ifstream& infile);
 public:
     static void readFileStudyRoom(DoublyLinkedList<StudyRoom>&);
     static void readFileStudent(DoublyLinkedList<Student>&);
