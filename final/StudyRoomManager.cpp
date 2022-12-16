@@ -7,9 +7,14 @@ void StudyRoomManager::addStudyRoom()
 {
     DoublyLinkedList<StudyRoom> list;
     DataBaseManager::readFileStudyRoom(list);
+    DoublyLinkedList<Accommodation> listAccommodation;
+    DataBaseManager::readFileAccommodationAndStudent(listAccommodation);
     StudyRoom newRoom;
     cout << "Enter the informations of new Study Room: " << endl;
     cin >> newRoom;
+    for (int i = 0; i < listAccommodation.getSize(); i++)
+        if (listAccommodation.get(i).getID() == newRoom.getID())
+            throw domain_error("This object is duplicated!");
     try
     {
         list.push_back(newRoom);
