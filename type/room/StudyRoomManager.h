@@ -1,8 +1,8 @@
 #ifndef STUDYROOMMANAGER_H
 #define STUDYROOMMANAGER_H
 #include "StudyRoom.h"
-#include "DoublyLinkedList.h"
-#include "DataBaseManager.h"
+#include "utils/DoublyLinkedList.h"
+#include "database/DataBaseManager.h"
 
 class StudyRoomManager
 {

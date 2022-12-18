@@ -5,7 +5,7 @@
 using namespace std;
 
 Accommodation::Accommodation(int bed): bed(bed){}
-Accommodation::~Accommodation(){}
+Accommodation::~Accommodation()= default;
 
 void Accommodation::setBed(int bed)
 {

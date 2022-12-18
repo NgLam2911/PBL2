@@ -1,7 +1,7 @@
 #include "Room.h"
 
 Room::Room(int idArea, int idRoom): idArea(idArea), idRoom(idRoom){}
-Room::~Room(){}
+Room::~Room()= default;
 
 void Room::setIdArea(int idArea)
 {

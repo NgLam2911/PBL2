@@ -1,6 +1,7 @@
 #include "AccommodationManager.h"
 
 #include <iostream>
+#include <type/room/StudyRoom.h>
 using namespace std;
 
 void AccommodationManager::addAccommodation()
@@ -25,7 +26,7 @@ void AccommodationManager::deleteAccommodation()
     DoublyLinkedList<Accommodation> list;
     DataBaseManager::readFileAccommodationAndStudent(list);
     int code;
-    bool check1, check2 = 0;
+    bool check1, check2 = false;
     cout << "Enter the Accommodation Room's ID you want to delete: "; cin >> code;
     for (int i = 0; i < list.getSize(); i++)
     {
@@ -40,7 +41,7 @@ void AccommodationManager::deleteAccommodation()
                     break;
             }
             list.remove(i);
-            check2 = 1;
+            check2 = true;
             break;
         }
     }
@@ -61,7 +62,7 @@ void AccommodationManager::findAccommodation()
         if (list.get(i).getID() == code)
         {
             cout << list.get(i);
-            check = 1;
+            check = true;
             break;
         }
     }
@@ -75,7 +76,7 @@ void AccommodationManager::updateAccommodation()
     DataBaseManager::readFileAccommodationAndStudent(list);
     int code;
     cout << "Enter the ID of the Accommodation you want to edit: "; cin >> code;
-    bool check1, check2 = 0;
+    bool check1, check2 = false;
     for (int i = 0; i < list.getSize(); i++)
     {
         if (list.get(i).getID() == code)
@@ -91,7 +92,7 @@ void AccommodationManager::updateAccommodation()
             Accommodation AccommodationEdited;
             cout << "Enter the informations of the edited Accommodation: " << endl;
             cin >> AccommodationEdited;
-            check2 = 1;
+            check2 = true;
             list.remove(i); 
             list.insert(AccommodationEdited, i);
             break;

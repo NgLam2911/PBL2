@@ -1,8 +1,8 @@
 #ifndef ACCOMMODATION_H
 #define ACCOMMODATION_H
-#include "Room.h"
-#include "Student.h"
-#include "DoublyLinkedList.h"
+#include "type/room/Room.h"
+#include "type/student/Student.h"
+#include "utils/DoublyLinkedList.h"
 
 class Accommodation : public Room
 {

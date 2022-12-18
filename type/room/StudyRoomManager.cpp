@@ -1,6 +1,7 @@
 #include "StudyRoomManager.h"
 
 #include <iostream>
+#include "type/accommodation/Accommodation.h"
 using namespace std;
 
 void StudyRoomManager::addStudyRoom()
@@ -32,13 +33,13 @@ void StudyRoomManager::deleteStudyRoom()
     DoublyLinkedList<StudyRoom> list;
     DataBaseManager::readFileStudyRoom(list);
     int code;
-    bool check = 0;
+    bool check = false;
     cout << "Enter the Study Room's ID you want to delete: "; cin >> code;
     for (int i = 0; i < list.getSize(); i++){
         if (list.get(i).getID() == code)
         {
             list.remove(i);
-            check = 1;
+            check = true;
             break;
         }
     }
@@ -52,14 +53,14 @@ void StudyRoomManager::findStudyRoom()
     DoublyLinkedList<StudyRoom> list;
     DataBaseManager::readFileStudyRoom(list);
     int code;
-    bool check = 0;
+    bool check = false;
     cout << "Enter the Study Room's ID you want to find: "; cin >> code;
     for (int i = 0; i < list.getSize(); i++)
     {
         if (list.get(i).getID() == code)
         {
             cout << list.get(i);
-            check = 1;
+            check = true;
             break;
         }
     }
@@ -73,12 +74,12 @@ void StudyRoomManager::updateStudyRoom()
     DataBaseManager::readFileStudyRoom(list);
     int code;
     cout << "Enter the ID of the Study Room you want to edit: "; cin >> code;
-    bool check = 0;
+    bool check = false;
     for (int i = 0; i < list.getSize(); i++)
     {
         if (list.get(i).getID() == code)
         {
-            check = 1;
+            check = true;
             StudyRoom StudyRoomEdited;
             cout << "Enter the informations of the edited Study Room: " << endl;
             cin >> StudyRoomEdited;

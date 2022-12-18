@@ -3,52 +3,71 @@
 
 #include <iostream>
 #include <string>
+
 using namespace std;
 
 template<typename type>
 class DoublyLinkedList {
-    private:
-        struct Node {
-            type value;
-            Node *next;
-            Node *prev;
-        };
-        Node *head;
-        int size;
+private:
+    struct Node {
+        type value;
+        Node *next;
+        Node *prev;
+    };
+    Node *head;
+    int size;
 
-        Node createNode(type data, Node* prev = nullptr, Node* next = nullptr);
+    Node createNode(type data, Node *prev = nullptr, Node *next = nullptr);
 
-    protected:
-        Node* getNode(int index) const;
-        void insertNode(int index, Node &node);
-        void removeNode(int index);
-        void swapNodes(Node *node1, Node *node2);
+protected:
+    Node *getNode(int index) const;
 
-    public:
-        DoublyLinkedList();
-        DoublyLinkedList(const DoublyLinkedList &orig);
-        virtual ~DoublyLinkedList();
+    void insertNode(int index, Node &node);
 
-        int getSize() const;
-        type& get(int index) const;
-        type front() const;
-        type back() const;
-        bool isEmpty() const;
+    void removeNode(int index);
 
-        void insert(type value, int index);
-        void push_front(type value);
-        void push_back(type value);
-        void remove(int index);
-        void pop_front();
-        void pop_back();
-        void clear();
-        void sort(bool (*compare)(type, type));
-        void reverse();
-        void fill(type value, int fillSize = 0);
+    void swapNodes(Node *node1, Node *node2);
+
+public:
+    DoublyLinkedList();
+
+    DoublyLinkedList(const DoublyLinkedList &orig);
+
+    virtual ~DoublyLinkedList();
+
+    int getSize() const;
+
+    type &get(int index) const;
+
+    type front() const;
+
+    type back() const;
+
+    bool isEmpty() const;
+
+    void insert(type value, int index);
+
+    void push_front(type value);
+
+    void push_back(type value);
+
+    void remove(int index);
+
+    void pop_front();
+
+    void pop_back();
+
+    void clear();
+
+    void sort(bool (*compare)(type, type));
+
+    void reverse();
+
+    void fill(type value, int fillSize = 0);
 };
 
 template<typename type>
-DoublyLinkedList<type>::DoublyLinkedList() : head(nullptr), size(0){}
+DoublyLinkedList<type>::DoublyLinkedList() : head(nullptr), size(0) {}
 
 template<typename type>
 DoublyLinkedList<type>::DoublyLinkedList(const DoublyLinkedList &orig) {
@@ -70,7 +89,7 @@ int DoublyLinkedList<type>::getSize() const {
 }
 
 template<typename type>
-type& DoublyLinkedList<type>::get(int index) const {
+type &DoublyLinkedList<type>::get(int index) const {
     return getNode(index)->value;
 }
 
@@ -136,7 +155,7 @@ void DoublyLinkedList<type>::clear() {
 
 template<typename type>
 void DoublyLinkedList<type>::sort(bool (*compare)(type, type)) {
-for (int i = 0; i < getSize(); i++) {
+    for (int i = 0; i < getSize(); i++) {
         for (int j = 0; j < getSize() - 1; j++) {
             if (compare(get(j + 1), get(j))) {
                 swapNodes(getNode(j), getNode(j + 1));
@@ -146,14 +165,12 @@ for (int i = 0; i < getSize(); i++) {
 }
 
 template<typename type>
-bool ascending(type type1, type type2)
-{
+bool ascending(type type1, type type2) {
     return type1.getID() < type2.getID();
 }
 
 template<typename type>
-bool descending(type type1, type type2)
-{
+bool descending(type type1, type type2) {
     return type1.getID() > type2.getID();
 }
 
@@ -179,7 +196,7 @@ void DoublyLinkedList<type>::fill(type value, int fillSize) {
 }
 
 template<typename type>
-typename DoublyLinkedList<type>::Node DoublyLinkedList<type>::createNode(type data, Node* prev, Node* next) {
+typename DoublyLinkedList<type>::Node DoublyLinkedList<type>::createNode(type data, Node *prev, Node *next) {
     Node node;
     node.value = data;
     node.prev = prev;
@@ -188,7 +205,7 @@ typename DoublyLinkedList<type>::Node DoublyLinkedList<type>::createNode(type da
 }
 
 template<typename type>
-typename DoublyLinkedList<type>::Node* DoublyLinkedList<type>::getNode(int index) const {
+typename DoublyLinkedList<type>::Node *DoublyLinkedList<type>::getNode(int index) const {
     if (index < 0 || index >= getSize()) {
         throw std::out_of_range("Index out of range");
     }
@@ -212,7 +229,7 @@ void DoublyLinkedList<type>::insertNode(int index, Node &node) {
         }
         this->head = &node;
     } else {
-        for (Node *temp = this->head; temp!=nullptr; temp = temp->next)
+        for (Node *temp = this->head; temp != nullptr; temp = temp->next)
             if (temp->value.getID() == node.value.getID())
                 throw std::domain_error("This object is duplicated!");
         Node *prevNode = getNode(index - 1);

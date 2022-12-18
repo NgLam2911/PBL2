@@ -5,24 +5,24 @@
 #include <string>
 using namespace std;
 
-Student::Student(){}
-Student::~Student(){}
+Student::Student()= default;
+Student::~Student()= default;
 
-void Student::setID(int id)
+void Student::setID(int Id)
 {
-    this->id = id;
+    this->id = Id;
 }
-void Student::setName(string name)
+void Student::setName(string Name)
 {
-    this->name = name;
+    this->name = Name;
 }
-void Student::setBirth(Date birth)
+void Student::setBirth(Date Birth)
 {
-    this->birth = birth;
+    this->birth = Birth;
 }
-void Student::setIdRoom(int idRoom)
+void Student::setIdRoom(int IdRoom)
 {
-    this->idRoom = idRoom;
+    this->idRoom = IdRoom;
 }
 
 int Student::getID() const

@@ -31,14 +31,14 @@ void StudentManager::deleteStudent()
     DoublyLinkedList<Student> list;
     DataBaseManager::readFileStudent(list);
     int code;
-    bool check = 0;
+    bool check = false;
     cout << "Enter the Student's ID you want to delete: "; cin >> code;
     for (int i = 0; i < list.getSize(); i++)
     {
         if (list.get(i).getID() == code)
         {
             list.remove(i);
-            check = 1;
+            check = true;
             break;
         }
     }
@@ -52,14 +52,14 @@ void StudentManager::findStudent()
     DoublyLinkedList<Student> list;
     DataBaseManager::readFileStudent(list);
     int code;
-    bool check = 0;
+    bool check = false;
     cout << "Enter the Student's ID you want to find: "; cin >> code;
     for (int i = 0; i < list.getSize(); i++)
     {
         if (list.get(i).getID() == code)
         {
             cout << list.get(i);
-            check = 1;
+            check = true;
             break;
         }
     }
@@ -72,14 +72,14 @@ void StudentManager::updateStudent()
     DoublyLinkedList<Student> list;
     DataBaseManager::readFileStudent(list);
     int code;
-    bool check = 0;
+    bool check = false;
     cout << "Enter the Student's ID you want to edit: "; cin >> code;
     for (int i = 0; i < list.getSize(); i++)
     {
         if (list.get(i).getID() == code)
         {
             list.remove(i);
-            check = 1;
+            check = true;
             break;
         }
     }

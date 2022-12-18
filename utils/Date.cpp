@@ -5,19 +5,19 @@
 using namespace std;
 
 Date::Date(int day, int month, int year): day(day), month(month), year(year){}
-Date::~Date(){}
+Date::~Date()= default;
 
-void Date::setDay(int day)
+void Date::setDay(int Day)
 {
-    this->day = day;
+    this->day = Day;
 }
-void Date::setMonth(int month)
+void Date::setMonth(int Month)
 {
-    this->month = month;
+    this->month = Month;
 }
-void Date::setYear(int year)
+void Date::setYear(int Year)
 {
-    this->year = year;
+    this->year = Year;
 }
 
 int Date::getDay() const
@@ -48,7 +48,7 @@ istream& operator>>(istream &in, Date &x)
         {
             cout << e.what() << endl;
             continue;
-        };
+        }
         break;
     }
     for (;;)
@@ -67,7 +67,7 @@ istream& operator>>(istream &in, Date &x)
         {
             cout << e.what() << endl;
             continue;
-        };
+        }
         break;
     }
     for (;;)
@@ -82,7 +82,7 @@ istream& operator>>(istream &in, Date &x)
         {
             cout << e.what() << endl;
             continue;
-        };
+        }
         break;
     }
     return in;

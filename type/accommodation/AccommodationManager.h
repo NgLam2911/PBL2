@@ -1,8 +1,8 @@
 #ifndef ACCOMMODATIONMANAGER_H
 #define ACCOMMODATIONMANAGER_H
 #include "Accommodation.h"
-#include "DoublyLinkedList.h"
-#include "DataBaseManager.h"
+#include "utils/DoublyLinkedList.h"
+#include "database/DataBaseManager.h"
 
 class AccommodationManager
 {

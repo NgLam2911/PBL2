@@ -5,7 +5,7 @@
 using namespace std;
 
 StudyRoom::StudyRoom(int table, int chair): table(table), chair(chair){}
-StudyRoom::~StudyRoom(){}
+StudyRoom::~StudyRoom()= default;
 
 void StudyRoom::setTable(int table)
 {
