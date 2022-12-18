@@ -23,12 +23,12 @@ void DataBaseManager::readFileStudyRoom(DoublyLinkedList<StudyRoom>& list)
     {
         StudyRoom a;
         infile >> f;
-        a.setIdArea(stoi(f,0,10) / 100);
-        a.setIdRoom(stoi(f,0,10) % 100);
+        a.setIdArea(stoi(f,nullptr,10) / 100);
+        a.setIdRoom(stoi(f,nullptr,10) % 100);
         infile >> f;
-        a.setTable(stoi(f,0,10));
+        a.setTable(stoi(f,nullptr,10));
         infile >> f;
-        a.setChair(stoi(f,0,10));
+        a.setChair(stoi(f,nullptr,10));
         list.push_back(a);
     }
     infile.close();
@@ -50,9 +50,9 @@ void DataBaseManager::readFileStudent(DoublyLinkedList<Student>& list)
         char temp[50];
         Student a;
         infile >> f;
-        a.setIdRoom(stoi(f,0,10));
+        a.setIdRoom(stoi(f,nullptr,10));
         infile >> f;
-        a.setID(stoi(f,0,10));
+        a.setID(stoi(f, nullptr,10));
         infile >> d;
         infile >> m;
         infile >> y;
@@ -81,10 +81,10 @@ void DataBaseManager::readFileAccommodationAndStudent(DoublyLinkedList<Accommoda
     {
         Accommodation a;
         infile >> f;
-        a.setIdArea(stoi(f,0,10) / 100);
-        a.setIdRoom(stoi(f,0,10) % 100);
+        a.setIdArea(stoi(f, nullptr,10) / 100);
+        a.setIdRoom(stoi(f, nullptr,10) % 100);
         infile >> f;
-        a.setBed(stoi(f,0,10));
+        a.setBed(stoi(f, nullptr,10));
         list.push_back(a);
     }
     infile.close();
