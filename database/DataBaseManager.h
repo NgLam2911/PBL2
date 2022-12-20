@@ -10,6 +10,10 @@ class DataBaseManager
 private:
     static bool is_empty(ifstream& infile);
 public:
+    static const string STUDENT_FILE;
+    static const string STUDYROOM_FILE;
+    static const string ACCOMMODATION_FILE;
+
     static void readFileStudyRoom(DoublyLinkedList<StudyRoom>&);
     static void readFileStudent(DoublyLinkedList<Student>&);
     static void readFileAccommodationAndStudent(DoublyLinkedList<Accommodation>&);

@@ -4,6 +4,10 @@
 #include <iostream>
 using namespace std;
 
+const string DataBaseManager::STUDENT_FILE = "saves/Student.txt";
+const string DataBaseManager::STUDYROOM_FILE = "saves/StudyRoom.txt";
+const string DataBaseManager::ACCOMMODATION_FILE = "saves/Accommodation.txt";
+
 bool DataBaseManager::is_empty(ifstream& infile)
 {
     return infile.peek() == ifstream::traits_type::eof();
@@ -12,7 +16,7 @@ bool DataBaseManager::is_empty(ifstream& infile)
 void DataBaseManager::readFileStudyRoom(DoublyLinkedList<StudyRoom>& list)
 {
     ifstream infile;
-    infile.open("StudyRoom.txt");
+    infile.open(DataBaseManager::STUDYROOM_FILE);
     if (is_empty(infile))
         {
             infile.close();
@@ -37,7 +41,7 @@ void DataBaseManager::readFileStudyRoom(DoublyLinkedList<StudyRoom>& list)
 void DataBaseManager::readFileStudent(DoublyLinkedList<Student>& list)
 {
     ifstream infile;
-    infile.open("Student.txt");
+    infile.open(DataBaseManager::STUDENT_FILE);
     if (is_empty(infile))
         {
             infile.close();
@@ -70,7 +74,7 @@ void DataBaseManager::readFileStudent(DoublyLinkedList<Student>& list)
 void DataBaseManager::readFileAccommodationAndStudent(DoublyLinkedList<Accommodation>& list)
 {
     ifstream infile;
-    infile.open("Accommodation.txt");
+    infile.open(DataBaseManager::ACCOMMODATION_FILE);
     if (is_empty(infile))
         {
             infile.close();
@@ -98,7 +102,7 @@ void DataBaseManager::readFileAccommodationAndStudent(DoublyLinkedList<Accommoda
 
 void DataBaseManager::writeFileStudyRoom(DoublyLinkedList<StudyRoom>& list)
 {
-    ofstream outfile("StudyRoom.txt");
+    ofstream outfile(DataBaseManager::STUDYROOM_FILE);
     if (outfile.fail())
         throw overflow_error("Can't open file at StudyRoom.txt!");
     for (int i = 0; i < list.getSize(); i++)
@@ -113,7 +117,7 @@ void DataBaseManager::writeFileStudyRoom(DoublyLinkedList<StudyRoom>& list)
 
 void DataBaseManager::writeFileStudent(DoublyLinkedList<Student>& list)
 {
-    ofstream outfile("Student.txt");
+    ofstream outfile(DataBaseManager::STUDENT_FILE);
     if (outfile.fail())
         throw overflow_error("Can't open file at Student.txt!");
     for (int i = 0; i < list.getSize(); i++)
@@ -132,10 +136,10 @@ void DataBaseManager::writeFileStudent(DoublyLinkedList<Student>& list)
 
 void DataBaseManager::writeFileAccommodationAndStudent(DoublyLinkedList<Accommodation>& list)
 {
-    ofstream outfile1("Accommodation.txt");
-    ofstream outfile2("Student.txt");
+    ofstream outfile1(DataBaseManager::ACCOMMODATION_FILE);
+    ofstream outfile2(DataBaseManager::STUDENT_FILE);
     if (outfile1.fail() || outfile2.fail())
-        throw overflow_error("Can't open file at Accommodation.txt!");
+        throw overflow_error("Can't open file at Accommodation.txt or Student.txt!");
     for (int i = 0; i < list.getSize(); i++)
     {
         if (i == list.getSize() - 1)
