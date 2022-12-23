@@ -63,7 +63,7 @@ public:
 
     void reverse();
 
-    void fill(type value, int fillSize = 0);
+    void fill(type value, int fillSize);
 };
 
 template<typename type>
