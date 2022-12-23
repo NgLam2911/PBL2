@@ -21,6 +21,7 @@ public:
 
     friend istream& operator>>(istream &in, Accommodation &x);
     friend ostream& operator<<(ostream &out, const Accommodation &x);
+    Accommodation& operator=(const Accommodation&);
 
     virtual int Capacity() const;
 };

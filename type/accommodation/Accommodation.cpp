@@ -87,6 +87,19 @@ ostream &operator<<(ostream &out, const Accommodation&x)
     return out;
 }
 
+Accommodation& Accommodation::operator=(const Accommodation& x)
+{
+    this->bed = x.bed;
+    this->idArea = x.idArea;
+    this->idRoom = x.idRoom;
+    this->ListOfStudent.clear();
+    for (int i = 0; i < x.ListOfStudent.getSize(); i++)
+    {
+        this->ListOfStudent.push_back(x.ListOfStudent.get(i));
+    }
+    return *this;
+}
+
 int Accommodation::Capacity() const
 {
     return this->bed;
