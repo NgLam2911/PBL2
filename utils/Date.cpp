@@ -75,6 +75,8 @@ istream& operator>>(istream &in, Date &x)
         try
         {
             cout << "Enter Year: "; in >> x.year;
+            if (x.year < 1970 || x.year > 2022)
+                throw invalid_argument("Year only from 1970 to 2022");
             if (x.day == 29 && x.month == 2 && (x.year % 4 != 0 || (x.year % 100 == 0 && x.year % 400 != 0)))
                 throw invalid_argument("Not a leap year!");
         }
