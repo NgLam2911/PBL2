@@ -25,6 +25,13 @@ int main() {
         int choice1 = 0, choice2 = 0;
         cout << "Enter number of action: ";
         cin >> choice1;
+        while (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(INT_MAX, '\n');
+            cout << "Enter number of action: ";
+            cin >> choice1;
+        }
         if (choice1 == 0)
             break;
         switch (choice1) {
