@@ -47,7 +47,7 @@ istream &operator>>(istream &in, Accommodation &x)
         try
         {
             cout << "Enter Room's ID: "; in >> x.idRoom;
-            if (x.idArea > 99 || x.idArea < 1)
+            if (x.idRoom > 99 || x.idRoom < 1)
                 throw invalid_argument("Room's ID is only from 1 to 99!");
         }
         catch(invalid_argument& e)
