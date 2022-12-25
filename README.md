@@ -8,4 +8,4 @@ Project PBL2
 
 # Credit
 * Idea, data structure, base code design: me - a stupid dev.
-* A big thanks to [NDLoc-vn] (https://github.com/NDLoc-vn) for helping me complete this school project!
+* A big thanks to [NDLoc-vn](https://github.com/NDLoc-vn) for helping me complete this school project!
