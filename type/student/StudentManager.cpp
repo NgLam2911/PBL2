@@ -13,7 +13,7 @@ void StudentManager::addStudent()
     for (int i = 0; i < listAccommodation.getSize(); i++)
         if (listAccommodation.get(i).getID() == newStudent.getIdRoom())
         {
-            if (listAccommodation.get(i).Capacity() == listAccommodation.get(i).getListOfStudent().getSize())
+            if (listAccommodation.get(i).Capacity() == 0)
                 throw out_of_range("This room is full!");
             DoublyLinkedList<Student> listStudent;
             DataBaseManager::readFileStudent(listStudent);
