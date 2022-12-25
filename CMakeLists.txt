@@ -26,4 +26,4 @@ add_executable(PBL2
         type/student/Student.cpp
         type/student/StudentManager.h
         type/student/StudentManager.cpp
-        )
+)
