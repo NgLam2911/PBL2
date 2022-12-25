@@ -1,7 +1,7 @@
 #ifndef STUDENTMANAGER_H
 #define STUDENTMANAGER_H
 #include "Student.h"
-#include "type/accommodation/Accommodation.h"
+#include "type/room/accommodation/Accommodation.h"
 #include "utils/DoublyLinkedList.h"
 #include "database/DataBaseManager.h"
 

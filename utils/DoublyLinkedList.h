@@ -15,7 +15,7 @@ private:
         Node *prev;
     };
     Node *head;
-    int size;
+    int size = 0;
 
     Node createNode(type data, Node *prev = nullptr, Node *next = nullptr);
 

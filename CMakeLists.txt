@@ -12,18 +12,18 @@ add_executable(PBL2
         utils/DoublyLinkedList.h
         database/DataBaseManager.h
         database/DataBaseManager.cpp
-        type/accommodation/Accommodation.h
-        type/accommodation/Accommodation.cpp
-        type/accommodation/AccommodationManager.h
-        type/accommodation/AccommodationManager.cpp
+        type/room/accommodation/Accommodation.h
+        type/room/accommodation/Accommodation.cpp
+        type/room/accommodation/AccommodationManager.h
+        type/room/accommodation/AccommodationManager.cpp
         type/room/Room.h
         type/room/Room.cpp
-        type/room/StudyRoom.h
-        type/room/StudyRoom.cpp
-        type/room/StudyRoomManager.h
-        type/room/StudyRoomManager.cpp
+        type/room/studyroom/StudyRoom.h
+        type/room/studyroom/StudyRoom.cpp
+        type/room/studyroom/StudyRoomManager.h
+        type/room/studyroom/StudyRoomManager.cpp
         type/student/Student.h
         type/student/Student.cpp
         type/student/StudentManager.h
         type/student/StudentManager.cpp
-)
+        )

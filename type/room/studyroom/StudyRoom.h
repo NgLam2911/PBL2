@@ -1,6 +1,6 @@
 #ifndef STUDYROOM_H
 #define STUDYROOM_H
-#include "Room.h"
+#include "type/room/Room.h"
 
 #include <iostream>
 using namespace std;

@@ -1,68 +1,61 @@
 #include "DataBaseManager.h"
 
 #include <fstream>
-#include <iostream>
+
 using namespace std;
 
 const string DataBaseManager::STUDENT_FILE = "saves/Student.txt";
 const string DataBaseManager::STUDYROOM_FILE = "saves/StudyRoom.txt";
 const string DataBaseManager::ACCOMMODATION_FILE = "saves/Accommodation.txt";
 
-bool DataBaseManager::is_empty(ifstream& infile)
-{
+bool DataBaseManager::is_empty(ifstream &infile) {
     return infile.peek() == ifstream::traits_type::eof();
 }
 
-void DataBaseManager::readFileStudyRoom(DoublyLinkedList<StudyRoom>& list)
-{
+void DataBaseManager::readFileStudyRoom(DoublyLinkedList<StudyRoom> &list) {
     ifstream infile;
     infile.open(DataBaseManager::STUDYROOM_FILE);
-    if (is_empty(infile))
-        {
-            infile.close();
-            return;
-        }
+    if (is_empty(infile)) {
+        infile.close();
+        return;
+    }
     string f;
-    while (!infile.eof())
-    {
+    while (!infile.eof()) {
         StudyRoom a;
         infile >> f;
-        a.setIdArea(stoi(f,nullptr,10) / 100);
-        a.setIdRoom(stoi(f,nullptr,10) % 100);
+        a.setIdArea(stoi(f, nullptr, 10) / 100);
+        a.setIdRoom(stoi(f, nullptr, 10) % 100);
         infile >> f;
-        a.setTable(stoi(f,nullptr,10));
+        a.setTable(stoi(f, nullptr, 10));
         infile >> f;
-        a.setChair(stoi(f,nullptr,10));
+        a.setChair(stoi(f, nullptr, 10));
         list.push_back(a);
     }
     infile.close();
 }
 
-void DataBaseManager::readFileStudent(DoublyLinkedList<Student>& list)
-{
+void DataBaseManager::readFileStudent(DoublyLinkedList<Student> &list) {
     ifstream infile;
     infile.open(DataBaseManager::STUDENT_FILE);
-    if (is_empty(infile))
-        {
-            infile.close();
-            return;
-        }
+    if (is_empty(infile)) {
+        infile.close();
+        return;
+    }
     string f;
     int d, m, y;
-    while(!infile.eof())
-    {
+    while (!infile.eof()) {
         char temp[50];
         Student a;
         infile >> f;
-        a.setIdRoom(stoi(f,nullptr,10));
+        a.setIdRoom(stoi(f, nullptr, 10));
         infile >> f;
-        a.setID(stoi(f, nullptr,10));
+        a.setID(stoi(f, nullptr, 10));
         infile >> d;
         infile >> m;
         infile >> y;
-        Date ngay(d,m,y);
+        Date ngay(d, m, y);
         a.setBirth(ngay);
-        infile.ignore(1,' ');
+        infile.ignore(1, ' ');
         infile.getline(temp, 50);
         f = temp;
         a.setName(f);
@@ -71,24 +64,21 @@ void DataBaseManager::readFileStudent(DoublyLinkedList<Student>& list)
     infile.close();
 }
 
-void DataBaseManager::readFileAccommodationAndStudent(DoublyLinkedList<Accommodation>& list)
-{
+void DataBaseManager::readFileAccommodationAndStudent(DoublyLinkedList<Accommodation> &list) {
     ifstream infile;
     infile.open(DataBaseManager::ACCOMMODATION_FILE);
-    if (is_empty(infile))
-        {
-            infile.close();
-            return;
-        }
+    if (is_empty(infile)) {
+        infile.close();
+        return;
+    }
     string f;
-    while (!infile.eof())
-    {
+    while (!infile.eof()) {
         Accommodation a;
         infile >> f;
-        a.setIdArea(stoi(f, nullptr,10) / 100);
-        a.setIdRoom(stoi(f, nullptr,10) % 100);
+        a.setIdArea(stoi(f, nullptr, 10) / 100);
+        a.setIdRoom(stoi(f, nullptr, 10) % 100);
         infile >> f;
-        a.setBed(stoi(f, nullptr,10));
+        a.setBed(stoi(f, nullptr, 10));
         list.push_back(a);
     }
     infile.close();
@@ -100,13 +90,11 @@ void DataBaseManager::readFileAccommodationAndStudent(DoublyLinkedList<Accommoda
                 list.get(i).getListOfStudent().push_back(listStudent.get(j));
 }
 
-void DataBaseManager::writeFileStudyRoom(DoublyLinkedList<StudyRoom>& list)
-{
+void DataBaseManager::writeFileStudyRoom(DoublyLinkedList<StudyRoom> &list) {
     ofstream outfile(DataBaseManager::STUDYROOM_FILE);
     if (outfile.fail())
         throw overflow_error("Can't open file at StudyRoom.txt!");
-    for (int i = 0; i < list.getSize(); i++)
-    {
+    for (int i = 0; i < list.getSize(); i++) {
         if (i == list.getSize() - 1)
             outfile << list.get(i).getID() << " " << list.get(i).getTable() << " " << list.get(i).getChair();
         else
@@ -115,13 +103,11 @@ void DataBaseManager::writeFileStudyRoom(DoublyLinkedList<StudyRoom>& list)
     outfile.close();
 }
 
-void DataBaseManager::writeFileStudent(DoublyLinkedList<Student>& list)
-{
+void DataBaseManager::writeFileStudent(DoublyLinkedList<Student> &list) {
     ofstream outfile(DataBaseManager::STUDENT_FILE);
     if (outfile.fail())
         throw overflow_error("Can't open file at Student.txt!");
-    for (int i = 0; i < list.getSize(); i++)
-    {
+    for (int i = 0; i < list.getSize(); i++) {
         outfile << list.get(i).getIdRoom() << " " << list.get(i).getID() << " ";
         outfile << list.get(i).getBirth().getDay() << " ";
         outfile << list.get(i).getBirth().getMonth() << " ";
@@ -134,20 +120,17 @@ void DataBaseManager::writeFileStudent(DoublyLinkedList<Student>& list)
     outfile.close();
 }
 
-void DataBaseManager::writeFileAccommodationAndStudent(DoublyLinkedList<Accommodation>& list)
-{
+void DataBaseManager::writeFileAccommodationAndStudent(DoublyLinkedList<Accommodation> &list) {
     ofstream outfile1(DataBaseManager::ACCOMMODATION_FILE);
     ofstream outfile2(DataBaseManager::STUDENT_FILE);
     if (outfile1.fail() || outfile2.fail())
         throw overflow_error("Can't open file at Accommodation.txt or Student.txt!");
-    for (int i = 0; i < list.getSize(); i++)
-    {
+    for (int i = 0; i < list.getSize(); i++) {
         if (i == list.getSize() - 1)
             outfile1 << list.get(i).getID() << " " << list.get(i).getBed();
         else
             outfile1 << list.get(i).getID() << " " << list.get(i).getBed() << endl;
-        for (int j = 0; j < list.get(i).getListOfStudent().getSize(); j++)
-        {
+        for (int j = 0; j < list.get(i).getListOfStudent().getSize(); j++) {
             outfile2 << list.get(i).getListOfStudent().get(j).getIdRoom() << " ";
             outfile2 << list.get(i).getListOfStudent().get(j).getID() << " ";
             outfile2 << list.get(i).getListOfStudent().get(j).getBirth().getDay() << " ";
@@ -162,3 +145,4 @@ void DataBaseManager::writeFileAccommodationAndStudent(DoublyLinkedList<Accommod
     outfile2.close();
     outfile1.close();
 }
+

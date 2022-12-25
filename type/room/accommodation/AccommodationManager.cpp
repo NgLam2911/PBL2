@@ -1,7 +1,6 @@
 #include "AccommodationManager.h"
 
 #include <iostream>
-#include <type/room/StudyRoom.h>
 using namespace std;
 
 void AccommodationManager::addAccommodation()
@@ -55,7 +54,7 @@ void AccommodationManager::findAccommodation()
     DoublyLinkedList<Accommodation> list;
     DataBaseManager::readFileAccommodationAndStudent(list);
     int code;
-    bool check;
+    bool check = false;
     cout << "Enter the Study Room's ID you want to find: "; cin >> code;
     for (int i = 0; i < list.getSize(); i++)
     {

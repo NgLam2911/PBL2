@@ -1,9 +1,9 @@
 #ifndef DATABASEMANAGER_H
 #define DATABASEMANAGER_H
 #include "utils/DoublyLinkedList.h"
-#include "type/room/StudyRoom.h"
+#include "type/room/studyroom/StudyRoom.h"
 #include "type/student/Student.h"
-#include "type/accommodation/Accommodation.h"
+#include "type/room/accommodation/Accommodation.h"
 
 class DataBaseManager
 {

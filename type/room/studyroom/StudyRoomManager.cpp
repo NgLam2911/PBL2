@@ -1,7 +1,7 @@
 #include "StudyRoomManager.h"
 
 #include <iostream>
-#include "type/accommodation/Accommodation.h"
+#include "type/room/accommodation/Accommodation.h"
 using namespace std;
 
 void StudyRoomManager::addStudyRoom()
