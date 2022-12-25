@@ -62,8 +62,8 @@ istream &operator>>(istream &in, Accommodation &x)
         try
         {
             cout << "Enter Number of beds: "; in >> x.bed;
-            if (x.bed < 0)
-                throw invalid_argument("Number of Beds must be greater than 0!");
+            if (x.bed < 0 || x.bed > 8)
+                throw invalid_argument("Number of Beds is only from 1 to 8!");
         }
         catch(invalid_argument& e)
         {
