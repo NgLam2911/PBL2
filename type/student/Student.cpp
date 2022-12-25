@@ -49,6 +49,13 @@ istream &operator>>(istream &in, Student &x)
         try
         {
             cout << "Enter Student's ID: "; in >> x.id;
+            while (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+                cout << "Enter Student's ID: ";
+                cin >> x.id;
+            }
             if (x.id < 1000)
                 throw invalid_argument("Student's ID must be greater than or equal to 10000!");
         }
@@ -66,6 +73,13 @@ istream &operator>>(istream &in, Student &x)
         try
         {
             cout << "Enter the Registered Room's ID: "; in >> x.idRoom;
+            while (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+                cout << "Enter the Registered Room's ID: ";
+                cin >> x.idRoom;
+            }
             if (x.idRoom > 1000 || x.idRoom < 0)
                 throw invalid_argument("Student's ID must be greater than 0 and less than 10000!");
         }

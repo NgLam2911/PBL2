@@ -32,6 +32,13 @@ istream &operator>>(istream &in, Accommodation &x)
         try
         {
             cout << "Enter Area's ID: "; in >> x.idArea;
+            while (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+                cout << "Enter Area's ID: ";
+                cin >> x.idArea;
+            }
             if (x.idArea > 9 || x.idArea < 1)
                 throw invalid_argument("Area's ID is only from 1 to 9!");
         }
@@ -47,6 +54,13 @@ istream &operator>>(istream &in, Accommodation &x)
         try
         {
             cout << "Enter Room's ID: "; in >> x.idRoom;
+            while (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+                cout << "Enter Room's ID: ";
+                cin >> x.idRoom;
+            }
             if (x.idRoom > 99 || x.idRoom < 1)
                 throw invalid_argument("Room's ID is only from 1 to 99!");
         }
@@ -62,6 +76,13 @@ istream &operator>>(istream &in, Accommodation &x)
         try
         {
             cout << "Enter Number of beds: "; in >> x.bed;
+            while (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+                cout << "Enter Number of beds: ";
+                cin >> x.bed;
+            }
             if (x.bed < 0 || x.bed > 8)
                 throw invalid_argument("Number of Beds is only from 1 to 8!");
         }
@@ -102,5 +123,5 @@ Accommodation& Accommodation::operator=(const Accommodation& x)
 
 int Accommodation::Capacity() const
 {
-    return this->bed;
+    return this->bed - this->ListOfStudent.getSize();
 }

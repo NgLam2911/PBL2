@@ -35,6 +35,13 @@ void StudyRoomManager::deleteStudyRoom()
     int code;
     bool check = false;
     cout << "Enter the Study Room's ID you want to delete: "; cin >> code;
+    while (cin.fail())
+    {
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        cout << "Enter the Study Room's ID you want to delete: ";
+        cin >> code;
+    }
     for (int i = 0; i < list.getSize(); i++){
         if (list.get(i).getID() == code)
         {
@@ -55,6 +62,13 @@ void StudyRoomManager::findStudyRoom()
     int code;
     bool check = false;
     cout << "Enter the Study Room's ID you want to find: "; cin >> code;
+    while (cin.fail())
+    {
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        cout << "Enter the Study Room's ID you want to find: ";
+        cin >> code;
+    }
     for (int i = 0; i < list.getSize(); i++)
     {
         if (list.get(i).getID() == code)
@@ -74,6 +88,13 @@ void StudyRoomManager::updateStudyRoom()
     DataBaseManager::readFileStudyRoom(list);
     int code;
     cout << "Enter the ID of the Study Room you want to edit: "; cin >> code;
+    while (cin.fail())
+    {
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        cout << "Enter the ID of the Study Room you want to edit: ";
+        cin >> code;
+    }
     bool check = false;
     for (int i = 0; i < list.getSize(); i++)
     {

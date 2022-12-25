@@ -41,6 +41,13 @@ istream& operator>>(istream &in, Date &x)
         {
             cout << "Enter Day: ";
             in >> x.day;
+            while (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+                cout << "Enter Day: ";
+                cin >> x.day;
+            }
             if (x.day < 1 || x.day > 31)
                 throw invalid_argument("Day can't be less than 1 or greater than 31!");
         }
@@ -56,6 +63,13 @@ istream& operator>>(istream &in, Date &x)
         try
         {
             cout << "Enter Month: "; in >> x.month;
+            while (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+                cout << "Enter Month: ";
+                cin >> x.month;
+            }
             if (x.month < 1 || x.month > 12)
                 throw invalid_argument("Month only from 1 to 12!");
             if (x.day == 30 && x.month == 2)
@@ -75,6 +89,13 @@ istream& operator>>(istream &in, Date &x)
         try
         {
             cout << "Enter Year: "; in >> x.year;
+            while (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+                cout << "Enter Year: ";
+                cin >> x.year;
+            }
             if (x.year < 1970 || x.year > 2022)
                 throw invalid_argument("Year only from 1970 to 2022");
             if (x.day == 29 && x.month == 2 && (x.year % 4 != 0 || (x.year % 100 == 0 && x.year % 400 != 0)))

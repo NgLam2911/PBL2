@@ -15,7 +15,14 @@ void AccommodationManager::addAccommodation()
     for (int i = 0; i < listStudyRoom.getSize(); i++)
         if (listStudyRoom.get(i).getID() == newRoom.getID())
             throw domain_error("This object is duplicated!");
-    list.push_back(newRoom);
+    try
+    {
+        list.push_back(newRoom);
+    }
+    catch (const domain_error& e)
+    {
+        cout << e.what() << endl;
+    }
     list.sort(ascending);
     DataBaseManager::writeFileAccommodationAndStudent(list);
 }
@@ -27,12 +34,20 @@ void AccommodationManager::deleteAccommodation()
     int code;
     bool check1, check2 = false;
     cout << "Enter the Accommodation Room's ID you want to delete: "; cin >> code;
+    while (cin.fail())
+    {
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        cout << "Enter the Accommodation Room's ID you want to delete: ";
+        cin >> code;
+    }
     for (int i = 0; i < list.getSize(); i++)
     {
         if (list.get(i).getID() == code)
         {
             if (list.get(i).getListOfStudent().getSize() != 0)
             {
+                check2 = 1;
                 cout << "If you delete this room, some students will also be deleted!" << endl;
                 cout << "Do you want to continue? (Yes - 1 / No - 0): ";
                 cin >> check1;
@@ -55,7 +70,14 @@ void AccommodationManager::findAccommodation()
     DataBaseManager::readFileAccommodationAndStudent(list);
     int code;
     bool check = false;
-    cout << "Enter the Study Room's ID you want to find: "; cin >> code;
+    cout << "Enter the Accommodation Room's ID you want to find: "; cin >> code;
+    while (cin.fail())
+    {
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        cout << "Enter the Accommodation Room's ID you want to find: ";
+        cin >> code;
+    }
     for (int i = 0; i < list.getSize(); i++)
     {
         if (list.get(i).getID() == code)
@@ -75,6 +97,13 @@ void AccommodationManager::updateAccommodation()
     DataBaseManager::readFileAccommodationAndStudent(list);
     int code;
     cout << "Enter the ID of the Accommodation you want to edit: "; cin >> code;
+    while (cin.fail())
+    {
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        cout << "Enter the ID of the Accommodation you want to edit: ";
+        cin >> code;
+    }
     bool check1, check2 = false;
     for (int i = 0; i < list.getSize(); i++)
     {
@@ -82,6 +111,7 @@ void AccommodationManager::updateAccommodation()
         {
             if (list.get(i).getListOfStudent().getSize() != 0)
             {
+                check2 = 1;
                 cout << "If you edit this room, some students will also be deleted!" << endl;
                 cout << "Do you want to continue? (Yes - 1 / No - 0): ";
                 cin >> check1;

@@ -44,6 +44,13 @@ int main() {
 
                 cout << "Enter number of action: ";
                 cin >> choice2;
+                while (cin.fail())
+                {
+                    cin.clear();
+                    cin.ignore(INT_MAX, '\n');
+                    cout << "Enter number of action: ";
+                    cin >> choice2;
+                }
                 switch (choice2) {
                     case 1:
                         try { StudentManager::addStudent(); }
@@ -91,6 +98,13 @@ int main() {
 
                 cout << "Enter number of action: ";
                 cin >> choice2;
+                while (cin.fail())
+                {
+                    cin.clear();
+                    cin.ignore(INT_MAX, '\n');
+                    cout << "Enter number of action: ";
+                    cin >> choice2;
+                }
                 switch (choice2) {
                     case 1:
                         try { StudentManager::deleteStudent(); }
@@ -138,6 +152,13 @@ int main() {
 
                 cout << "Enter number of action: ";
                 cin >> choice2;
+                while (cin.fail())
+                {
+                    cin.clear();
+                    cin.ignore(INT_MAX, '\n');
+                    cout << "Enter number of action: ";
+                    cin >> choice2;
+                }
                 switch (choice2) {
                     case 1:
                         try { StudentManager::findStudent(); }
@@ -185,6 +206,13 @@ int main() {
 
                 cout << "Enter number of action: ";
                 cin >> choice2;
+                while (cin.fail())
+                {
+                    cin.clear();
+                    cin.ignore(INT_MAX, '\n');
+                    cout << "Enter number of action: ";
+                    cin >> choice2;
+                }
                 switch (choice2) {
                     case 1:
                         try { StudentManager::updateStudent(); }
@@ -232,6 +260,13 @@ int main() {
 
                 cout << "Enter number of action: ";
                 cin >> choice2;
+                while (cin.fail())
+                {
+                    cin.clear();
+                    cin.ignore(INT_MAX, '\n');
+                    cout << "Enter number of action: ";
+                    cin >> choice2;
+                }
                 switch (choice2) {
                     case 1:
                         try { StudentManager::seeListStudent(); }

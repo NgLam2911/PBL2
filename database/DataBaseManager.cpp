@@ -125,18 +125,26 @@ void DataBaseManager::writeFileAccommodationAndStudent(DoublyLinkedList<Accommod
     ofstream outfile2(DataBaseManager::STUDENT_FILE);
     if (outfile1.fail() || outfile2.fail())
         throw overflow_error("Can't open file at Accommodation.txt or Student.txt!");
-    for (int i = 0; i < list.getSize(); i++) {
+    int count1 = 0;
+    for (int i = 0; i < list.getSize(); i++)
+        for (int j = 0; j < list.get(i).getListOfStudent().getSize(); j++)
+            count1++;
+    int count2 = 0;
+    for (int i = 0; i < list.getSize(); i++)
+    {
         if (i == list.getSize() - 1)
             outfile1 << list.get(i).getID() << " " << list.get(i).getBed();
         else
             outfile1 << list.get(i).getID() << " " << list.get(i).getBed() << endl;
-        for (int j = 0; j < list.get(i).getListOfStudent().getSize(); j++) {
+        for (int j = 0; j < list.get(i).getListOfStudent().getSize(); j++)
+        {
+            count2++;
             outfile2 << list.get(i).getListOfStudent().get(j).getIdRoom() << " ";
             outfile2 << list.get(i).getListOfStudent().get(j).getID() << " ";
             outfile2 << list.get(i).getListOfStudent().get(j).getBirth().getDay() << " ";
             outfile2 << list.get(i).getListOfStudent().get(j).getBirth().getMonth() << " ";
             outfile2 << list.get(i).getListOfStudent().get(j).getBirth().getYear() << " ";
-            if (j == list.get(i).getListOfStudent().getSize() - 1)
+            if (count2 == count1)
                 outfile2 << list.get(i).getListOfStudent().get(j).getName();
             else
                 outfile2 << list.get(i).getListOfStudent().get(j).getName() << endl;

@@ -33,6 +33,13 @@ void StudentManager::deleteStudent()
     int code;
     bool check = false;
     cout << "Enter the Student's ID you want to delete: "; cin >> code;
+    while (cin.fail())
+    {
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        cout << "Enter the Student's ID you want to delete: ";
+        cin >> code;
+    }
     for (int i = 0; i < list.getSize(); i++)
     {
         if (list.get(i).getID() == code)
@@ -54,6 +61,13 @@ void StudentManager::findStudent()
     int code;
     bool check = false;
     cout << "Enter the Student's ID you want to find: "; cin >> code;
+    while (cin.fail())
+    {
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        cout << "Enter the Student's ID you want to find: ";
+        cin >> code;
+    }
     for (int i = 0; i < list.getSize(); i++)
     {
         if (list.get(i).getID() == code)
@@ -74,6 +88,13 @@ void StudentManager::updateStudent()
     int code;
     bool check = false;
     cout << "Enter the Student's ID you want to edit: "; cin >> code;
+    while (cin.fail())
+    {
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        cout << "Enter the Student's ID you want to edit: ";
+        cin >> code;
+    }
     for (int i = 0; i < list.getSize(); i++)
     {
         if (list.get(i).getID() == code)

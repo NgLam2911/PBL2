@@ -32,6 +32,13 @@ istream &operator>>(istream& in, StudyRoom &x)
         try
         {
             cout << "Enter Area's ID: "; in >> x.idArea;
+            while (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+                cout << "Enter Area's ID: ";
+                cin >> x.idArea;
+            }
             if (x.idArea > 9 || x.idArea < 1)
                 throw invalid_argument("Area's ID is only from 1 to 9!");
         }
@@ -47,6 +54,13 @@ istream &operator>>(istream& in, StudyRoom &x)
         try
         {
             cout << "Enter Room's ID: "; in >> x.idRoom;
+            while (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+                cout << "Enter Room's ID: ";
+                cin >> x.idRoom;
+            }
             if (x.idRoom > 99 || x.idRoom < 1)
                 throw invalid_argument("Room's ID is only from 1 to 99!");
         }
@@ -62,6 +76,13 @@ istream &operator>>(istream& in, StudyRoom &x)
         try
         {
             cout << "Enter Number of Tables: "; in >> x.table;
+            while (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+                cout << "Enter Number of Tables: ";
+                cin >> x.table;
+            }
             if (x.table < 0)
                 throw invalid_argument("Number of Tables must be greater than 0!");
         }
@@ -77,6 +98,13 @@ istream &operator>>(istream& in, StudyRoom &x)
         try
         {
             cout << "Enter Number of Chairs: "; in >> x.chair;
+            while (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+                cout << "Enter Number of Chairs: ";
+                cin >> x.chair;
+            }
             if (x.chair < 0)
                 throw invalid_argument("Number of Chairs must be greater than 0!");
         }
