@@ -1,9 +1,10 @@
 #include "type/student/StudentManager.h"
-#include "type/accommodation/AccommodationManager.h"
-#include "type/room/StudyRoomManager.h"
+#include "type/room/accommodation/AccommodationManager.h"
+#include "type/room/studyroom//StudyRoomManager.h"
 
 #include <iostream>
 #include <string>
+#include <climits>
 
 using namespace std;
 
