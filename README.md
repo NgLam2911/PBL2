@@ -5,6 +5,7 @@ Project PBL2
 * This repository is used only for educational purposes, exactly as it was intended. 
 * Everything in this project isn't perfect because it contains "spaghetti code", but you can find a better project on github. 
 * DO NOT USE ANY STACKOVERFLOW KEYS IN THIS OR YOUR SIMILAR PROJECT IF YOU DO NOT HAVE A COMPLETE UNDERSTANDING OF HOW THEY WORK... THEY CAN ASK U SOME WEIRD QUESTIONS ABOUT HOW THIS FUNCTION IS ****ING WORKING, WHAT ITS PURPOSE IS, AND SOMETHING ELSE. WATCH OUT !
+* About database: we are not allowed to use any sql based database so ...
 
 # Credit
 * Idea, data structure, base code design: me - a stupid dev.
